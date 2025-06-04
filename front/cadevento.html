@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Evento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Novo Evento</h1>
+  <form id="formEvento">
+    <label>Título: <input type="text" name="titulo" required></label>
+    <label>Descrição: <textarea name="descricao"></textarea></label>
+    <label>Início - Data: <input type="date" name="inicio_data" required></label>
+    <label>Início - Hora: <input type="time" name="inicio_hora" required></label>
+    <label>Fim - Data: <input type="date" name="fim_data" required></label>
+    <label>Fim - Hora: <input type="time" name="fim_hora" required></label>
+    <label>Local: <input type="text" name="local" required></label>
+    <label>Criador (ID): <input type="text" name="criadorId" required></label>
+    <label>Cor: <input type="color" name="cor" value="#4287f5"></label>
+    <label>Participantes (IDs separados por vírgula): <input type="text" name="participantes"></label>
+    <button type="submit">Salvar</button>
+  </form>
+  <button><a href="index.html" class="voltar-btn">Voltar</a></button>
+  <script src="script.js"></script>
+</body>
+</html>
