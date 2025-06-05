@@ -1,4 +1,5 @@
 const { connect } = require("./db");
+const { logError } = require("./log");
 
 class Usuario {
     constructor(nome, email, senha, avatar = "") {
@@ -10,8 +11,15 @@ class Usuario {
         this.updatedAt = new Date();
     }
 
+    validarCamposObrigatorios() {
+        if (!this.nome || !this.email || !this.senha) {
+            throw new Error("Campos obrigatórios não preenchidos em Usuario.");
+        }
+    }
+
     async inserir() {
         try {
+            this.validarCamposObrigatorios();
             const { db, client } = await connect();
             const result = await db.collection("usuarios").insertOne({
                 nome: this.nome,
@@ -25,7 +33,31 @@ class Usuario {
             client.close();
             return result;
         } catch (error) {
-            console.log("Erro ao inserir usuário:", error);
+            logError(error);
+            throw error;
+        }
+    }
+
+    static async buscar(filtro = {}) {
+        try {
+            const { db, client } = await connect();
+            const usuarios = await db.collection("usuarios").find(filtro).toArray();
+            client.close();
+            return usuarios;
+        } catch (error) {
+            logError(error);
+            throw error;
+        }
+    }
+
+    static async deletar(filtro = {}) {
+        try {
+            const { db, client } = await connect();
+            const result = await db.collection("usuarios").deleteMany(filtro);
+            client.close();
+            return result;
+        } catch (error) {
+            logError(error);
             throw error;
         }
     }
