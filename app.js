@@ -60,3 +60,19 @@ async function testarInsercao() {
 }
 
 testarInsercao();
+
+async function testarLogger() {
+    // Teste: Campos obrigatórios faltando
+    try {
+        const conviteInvalido = new Convite(null, null, null);
+        await conviteInvalido.inserir();
+    } catch (error) {
+        console.log("Erro esperado capturado (campos obrigatórios). Veja log.txt para o registro.");
+    }
+
+    // Teste: Forçar erro de banco de dados (opcional, se quiser simular)
+    // Você pode, por exemplo, desconectar o banco ou passar um nome de coleção inválido
+    // Isso depende de como seu connect() está implementado
+}
+// Chame a função de teste
+testarLogger();

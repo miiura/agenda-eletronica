@@ -1,0 +1,1 @@
+[2025-06-05T23:46:28.063Z] - Erro ao inserir convite: ReferenceError: error is not defined

@@ -1,5 +1,5 @@
 const { connect } = require("./db");
-const { logError } = require("./log");
+const Logger = require("./logger");
 
 class Usuario {
     constructor(nome, email, senha, avatar = "") {
@@ -33,7 +33,7 @@ class Usuario {
             client.close();
             return result;
         } catch (error) {
-            logError(error);
+            Logger.log("Erro ao inserir usuário" + error);
             throw error;
         }
     }
@@ -45,7 +45,7 @@ class Usuario {
             client.close();
             return usuarios;
         } catch (error) {
-            logError(error);
+            Logger.log("Erro ao buscar usuários: " + error);
             throw error;
         }
     }
@@ -57,7 +57,7 @@ class Usuario {
             client.close();
             return result;
         } catch (error) {
-            logError(error);
+            Logger.log("Erro ao deletar usuários: " + error);
             throw error;
         }
     }

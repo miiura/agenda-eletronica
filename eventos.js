@@ -1,5 +1,5 @@
 const { connect } = require("./db");
-const { logError } = require("./log");
+const Logger = require("./logger");
 
 class Evento {
     constructor(titulo, descricao, inicio, fim, local, criadorId, cor = "#4287f5", participantes = []) {
@@ -18,7 +18,7 @@ class Evento {
 
     validarCamposObrigatorios() {
         if (!this.titulo || !this.inicio || !this.fim || !this.local || !this.criadorId) {
-            throw new Error("Campos obrigatórios não preenchidos em Evento.");
+            throw new Logger.log("Campos obrigatórios não preenchidos em Evento." + error);
         }
     }
 
@@ -43,7 +43,7 @@ class Evento {
             client.close();
             return result;
         } catch (error) {
-            logError(error);
+            Logger.log("Erro ao inserir evento: " + error);
             throw error;
         }
     }
@@ -55,7 +55,7 @@ class Evento {
             client.close();
             return eventos;
         } catch (error) {
-            logError(error);
+            Logger.log("Erro ao buscar eventos: " + error);
             throw error;
         }
     }
@@ -67,7 +67,7 @@ class Evento {
             client.close();
             return result;
         } catch (error) {
-            logError(error);
+            Logger.log("Erro ao deletar eventos: " + error);
             throw error;
         }
     }
