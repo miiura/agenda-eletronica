@@ -58,5 +58,17 @@ class Convite {
             throw error;
         }
     }
+
+    async atualizar(filtro, atualizacao) {
+        try {
+            const { db, client } = await connect();
+            const result = await db.collection("convites").updateMany(filtro, { $set: atualizacao });
+            client.close();
+            return result;
+        } catch (error) {
+            Logger.log("Erro ao atualizar convites: " + error);
+            throw error;
+        }
+    }
 }
 module.exports = Convite;

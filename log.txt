@@ -1,1 +1,5 @@
 [2025-06-05T23:46:28.063Z] - Erro ao inserir convite: ReferenceError: error is not defined
+[2025-06-13T00:00:57.112Z] - Erro ao inserir convite: ReferenceError: error is not defined
+[2025-06-29T21:10:11.659Z] - Erro ao inserir convite: ReferenceError: error is not defined
+[2025-06-29T21:11:23.391Z] - Erro ao inserir convite: ReferenceError: error is not defined
+[29/06/2025, 18:14:30] - Erro ao inserir convite: ReferenceError: error is not defined

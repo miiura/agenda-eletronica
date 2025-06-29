@@ -61,6 +61,30 @@ async function testarInsercao() {
 
 testarInsercao();
 
+async function testarUpdateUsuario() {
+    try {
+        const Usuario = require("./usuarios");
+        // Atualiza o nome, email e senha do usuário
+        const filtro = { nome: "Matheus" };
+        const atualizacao = {
+            nome: "Murilo",
+            email: "murilo@exemplo.com",
+            senha: "murilo123"
+        };
+        const usuario = new Usuario();
+        const resultado = await usuario.atualizar(filtro, atualizacao);
+        if (resultado.modifiedCount > 0) {
+            console.log("Usuário atualizado com sucesso!");
+        } else {
+            console.log("Nenhum usuário encontrado para atualizar.");
+        }
+    } catch (error) {
+        console.error("Erro ao atualizar usuário:", error);
+    }
+}
+
+//testarUpdateUsuario();
+
 async function testarLogger() {
     // Teste: Campos obrigatórios faltando
     try {
