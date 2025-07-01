@@ -59,8 +59,6 @@ async function testarInsercao() {
     }
 }
 
-testarInsercao();
-
 async function testarUpdateUsuario() {
     try {
         const Usuario = require("./usuarios");
@@ -83,8 +81,6 @@ async function testarUpdateUsuario() {
     }
 }
 
-//testarUpdateUsuario();
-
 async function testarLogger() {
     // Teste: Campos obrigatórios faltando
     try {
@@ -93,10 +89,10 @@ async function testarLogger() {
     } catch (error) {
         console.log("Erro esperado capturado (campos obrigatórios). Veja log.txt para o registro.");
     }
-
-    // Teste: Forçar erro de banco de dados (opcional, se quiser simular)
-    // Você pode, por exemplo, desconectar o banco ou passar um nome de coleção inválido
-    // Isso depende de como seu connect() está implementado
 }
-// Chame a função de teste
+
+testarInsercao();
+
+//testarUpdateUsuario();
+
 testarLogger();
